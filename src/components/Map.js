@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-import ratIcon from '../rat-icon.png';
+import ratIcon from '../rat-25px.png';
 
-const dummyData = [
-  { id: 1, lat: 40.66766, lng: -73.96188 },
-  { id: 2, lat: 40.74113, lng: -73.98969 },
-  { id: 3, lat: 40.816971, lng: -73.92411 },
-  { id: 4, lat: 40.72402, lng: -73.95066 },
-];
 
 const icon = ratIcon;
 
@@ -39,7 +33,7 @@ const [error, setError] = useState(null);
   // this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
-    fetch("https://data.cityofnewyork.us/resource/erm2-nwe9.json?agency=DOHMH&descriptor=Rat%20Sighting&unique_key=39765157")
+    fetch("https://data.cityofnewyork.us/resource/erm2-nwe9.json?agency=DOHMH&descriptor=Rat%20Sighting")
       .then(res => res.json())
       .then(
         (result) => {
@@ -59,7 +53,12 @@ const [error, setError] = useState(null);
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
-    return <div>Loading...</div>;
+    return <div>
+        <h1>Loading...</h1>
+        <img src="favicon.ico" alt="rat emoji"/>
+        <img src="favicon.ico" alt="rat emoji"/>
+        <img src="favicon.ico" alt="rat emoji"/>
+        </div>;
   } else {
 
     return (
@@ -78,6 +77,6 @@ const [error, setError] = useState(null);
       </div>
     );
   };
-}
+};
 
 export default Map;
