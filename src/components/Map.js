@@ -1,5 +1,13 @@
 import React from "react";
-import { GoogleMap, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+
+
+const dummyData = [
+    {id: 1, lat: 40.667660, lng: -73.961880},
+    {id: 2, lat: 40.741130, lng: -73.989690},
+    {id: 3, lat: 40.816971, lng: -73.924110},
+]
+
 
 const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
@@ -26,11 +34,21 @@ function Map() {
     // feel free to render directly if you don't need that
    
     return (
-      <GoogleMap
+        <div>
+          <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
         zoom={11}
-      ></GoogleMap>
+      >
+          <Marker key='marker-1'  position={{lat: 40.724020, lng: -73.950660}}/>
+          {dummyData.map((element) => {
+              return (
+                  <Marker key={element.id} position={{lat: element.lat, lng: element.lng}}/>
+              )
+          })}
+     </GoogleMap>
+      
+        </div>
     );
   };
 
