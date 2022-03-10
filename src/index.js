@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Router } from 'react-router-dom';
-import history from './history.js'
+import history from './history.js';
+
 
 ReactDOM.render(
   <React.StrictMode>
