@@ -7,15 +7,20 @@ import {
 } from "@react-google-maps/api";
 import ratIcon from "../newrat-28px.png";
 import pigeonIcon from "../pigeon-28px.png";
+import pizza from "../pizza.png";
 import { connect } from "react-redux";
 import axios from "axios";
 
 // const testStart = 2011;
 // const testEnd = 2022;
 
-let count = 0;
-const rat = ratIcon;
-const pigeon = pigeonIcon;
+let ratCount = 0;
+let pigeonCount = 0;
+let icon;
+
+
+// const rat = ratIcon;
+// const pigeon = pigeonIcon;
 
 const containerStyle = {
   width: "80vw",
@@ -61,6 +66,7 @@ function Map(props) {
     return (
       <div className="container-load">
         <h1>Loading...</h1>
+        <img src={pizza} className="pizza" alt="logo" />
       </div>
     );
   } else {
@@ -71,7 +77,6 @@ function Map(props) {
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={11}>
           {items
             .filter((element) => {
-              count = 0;
               return (
                 props.startYear <= parseInt(element.created_date.slice(0, 4)) &&
                 props.endYear > parseInt(element.created_date.slice(0, 4)) &&
@@ -80,11 +85,17 @@ function Map(props) {
               );
             })
             .map((element) => {
-              count += 1;
+              if (element.descriptor === "Rat Sighting") {
+                ratCount += 1;
+                icon = ratIcon;
+              } else {
+                  pigeonCount += 1;
+                  icon = pigeonIcon;
+              }
               return (
                 <Marker
                   key={element.unique_key}
-                  icon={element.descriptor === "Rat Sighting" ? rat : pigeon}
+                  icon={icon}
                   position={{
                     lat: parseFloat(element.latitude),
                     lng: parseFloat(element.longitude),
@@ -92,7 +103,8 @@ function Map(props) {
                 />
               );
             })}
-          {console.log("COUNT>>>>>", count)}
+          {console.log("RAT COUNT>>>>>", ratCount)}
+          {console.log("PIGEON COUNT>>>>>", pigeonCount)}
         </GoogleMap>
       </div>
     );

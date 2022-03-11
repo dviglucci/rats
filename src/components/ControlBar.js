@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { updateStart, updateEnd, showRats, showPigeons } from "../redux/controlBar.js";
+import rat from '../newrat-28px.png';
+import pigeon from '../pigeon-28px.png';
 
 class ControlBar extends React.Component {
   constructor() {
@@ -36,8 +38,6 @@ class ControlBar extends React.Component {
   render() {
     return (
       <div className={"container-bar"}>
-        <h3>Select dates</h3>
-
         <div>Show rats</div>
         <label className="switch">
           <input name="rats" type="checkbox" onChange={this.checker} />
@@ -82,6 +82,14 @@ class ControlBar extends React.Component {
           <option value={2022}>2022</option>
           <option value={2023}>2023</option>
         </select>
+        <div className="key" id="key-top">
+          <img src={rat} alt="rat icon" className="icon"/>
+          <div>Rat sighting</div>
+        </div>
+        <div className="key">
+          <img src={pigeon} alt="pigeon icon" className="icon"/>
+          <div>Pigeon waste</div>
+        </div>
       </div>
     );
   }

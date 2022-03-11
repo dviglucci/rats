@@ -2,13 +2,14 @@
   text-align: center;
 }
 
-.App-logo {
+.pizza {
   pointer-events: none;
+  max-width: 300px;
 }
 
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
+  .pizza {
     animation: App-logo-spin infinite 20s linear;
   }
 }
@@ -37,6 +38,15 @@
   }
 }
 
+.container-load {
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .container-row {
   display: flex;
   flex-direction: row;
@@ -48,6 +58,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 2%;
+  font-size: larger;
 }
 
 .switch {
@@ -55,6 +67,7 @@
   display: inline-block;
   width: 60px;
   height: 34px;
+  margin: 5px 0px 30px;
 }
 
 .switch input {
@@ -108,3 +121,22 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+select {
+  height: 30px;
+  margin: 5px 0px 30px;
+}
+
+.key {
+  display: flex;
+  flex-direction: row;
+}
+
+#key-top {
+  padding-top: 120px;
+}
+
+.icon {
+  margin: 0px 5px 3px;
+}
+
