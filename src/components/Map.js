@@ -6,12 +6,12 @@ import {
   google,
 } from "@react-google-maps/api";
 import ratIcon from "../rat-25px.png";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
+// const testStart = 2011;
+// const testEnd = 2022;
 
-const testStart = 2016;
-const testEnd = 2019;
-
+let count = 0;
 const icon = ratIcon;
 
 const containerStyle = {
@@ -23,23 +23,18 @@ const center = {
   lng: -74.006,
 };
 
-function Map() {
-  //   const { isLoaded, loadError } = useLoadScript({
-  //     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-  //   });
 
-  //   if (loadError) return "Error loading maps";
-  //   if (!isLoaded) return "Loading maps";
+function Map(props) {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
+  const [totalCount, setCount] = useState(0);
 
   const {} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
   });
 
-  // Note: the empty deps array [] means
-  // this useEffect will run once
+  // The empty deps array [] means this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
     fetch(
@@ -51,9 +46,8 @@ function Map() {
           setIsLoaded(true);
           setItems(result);
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+        // It's important to handle errors here instead of a catch() block so that we
+        // don't swallow exceptions from actual bugs in components.
         (error) => {
           setIsLoaded(true);
           setError(error);
@@ -76,15 +70,17 @@ function Map() {
     return (
       <div>
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={11}>
-          {items.filter((element) => {
-                // console.log('CREATED DATE', parseFloat(element.created_date.slice(0, 4)))
-                  return(
-                    testStart <= parseFloat(element.created_date.slice(0, 4)) &&
-                    testEnd > parseFloat(element.created_date.slice(0, 4))
-                  )
-              }
-            )
+          {items
+            .filter((element) => {
+              // console.log('CREATED DATE', parseFloat(element.created_date.slice(0, 4)))
+              count = 0;
+              return (
+                props.startYear <= parseFloat(element.created_date.slice(0, 4)) &&
+                props.endYear > parseFloat(element.created_date.slice(0, 4))
+              )
+            })
             .map((element) => {
+              count += 1;
               return (
                 <Marker
                   key={element.unique_key}
@@ -95,19 +91,19 @@ function Map() {
                   }}
                 />
               );
-            })
-            }
+            })}
+            {console.log('COUNT>>>>>', count)}
         </GoogleMap>
       </div>
     );
-  };
-};
+  }
+}
 
 const mapState = (state) => {
-    return {
-        startYear: state.startYear,
-        endYear: state.endYear,
-    };
+  return {
+    startYear: state.startYear,
+    endYear: state.endYear,
+  };
 };
 
 export default connect(mapState)(Map);
