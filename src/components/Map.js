@@ -75,7 +75,7 @@ function Map() {
       <div>
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={11}>
           {items.filter((element) => {
-                console.log('CREATED DATE', parseFloat(element.created_date.slice(0, 4)))
+                // console.log('CREATED DATE', parseFloat(element.created_date.slice(0, 4)))
                   return(
                     testStart <= parseFloat(element.created_date.slice(0, 4)) &&
                     testEnd > parseFloat(element.created_date.slice(0, 4))

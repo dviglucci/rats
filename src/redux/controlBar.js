@@ -18,13 +18,20 @@ export const updateEnd = (year) => {
 };
 
 // REDUCER
-export default function controlBarReducer(state = {}, action) {
+export function startReducer(state = 2011, action) {
   switch (action.type) {
       case UPDATE_START:
-          return {...state, ...action.year};
-      case UPDATE_END:
-          return {...state, ...action.year};
+          return action.year;
       default:
           return state;
   };
 };
+
+export function endReducer(state = 2012, action) {
+    switch (action.type) {
+        case UPDATE_END:
+            return action.year;
+        default:
+            return state;
+    };
+  };

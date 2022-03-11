@@ -2,12 +2,12 @@ import { createStore, combineReducers } from 'redux';
 // import {createLogger} from 'redux-logger';
 // import thunkMiddleware from 'redux-thunk';
 // import {composeWithDevTools} from 'redux-devtools-extension';
-import controlBarReducer from '../redux/controlBar';
+import { startReducer, endReducer } from '../redux/controlBar';
 
 
 const reducer = combineReducers({
-    startYear: controlBarReducer,
-    endYear: controlBarReducer
+    startYear: startReducer,
+    endYear: endReducer
 //   user: userReducer,
 //   poem1: poem1Reducer,
 //   poem2: poem2Reducer,
