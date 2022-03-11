@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { GoogleMap, useLoadScript, Marker, google } from "@react-google-maps/api";
-import ratIcon from '../rat-25px.png';
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  google,
+} from "@react-google-maps/api";
+import ratIcon from "../rat-25px.png";
 
+const testStart = 2016;
+const testEnd = 2019;
 
 const icon = ratIcon;
 
@@ -15,17 +22,17 @@ const center = {
 };
 
 function Map() {
-//   const { isLoaded, loadError } = useLoadScript({
-//     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-//   });
+  //   const { isLoaded, loadError } = useLoadScript({
+  //     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+  //   });
 
-//   if (loadError) return "Error loading maps";
-//   if (!isLoaded) return "Loading maps";
-const [error, setError] = useState(null);
+  //   if (loadError) return "Error loading maps";
+  //   if (!isLoaded) return "Loading maps";
+  const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
-  const { } = useLoadScript({
+  const {} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
   });
 
@@ -33,8 +40,10 @@ const [error, setError] = useState(null);
   // this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
-    fetch("https://data.cityofnewyork.us/resource/erm2-nwe9.json?agency=DOHMH&descriptor=Rat%20Sighting")
-      .then(res => res.json())
+    fetch(
+      "https://data.cityofnewyork.us/resource/erm2-nwe9.json?agency=DOHMH&descriptor=Rat%20Sighting"
+    )
+      .then((res) => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
@@ -47,36 +56,49 @@ const [error, setError] = useState(null);
           setIsLoaded(true);
           setError(error);
         }
-      )
-  }, [])
+      );
+  }, []);
 
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
-    return <div className="container-load">
+    return (
+      <div className="container-load">
         <h1>Loading...</h1>
-        <img src="favicon.ico" alt="rat emoji"/>
-        <img src="favicon.ico" alt="rat emoji"/>
-        <img src="favicon.ico" alt="rat emoji"/>
-        </div>;
+        <img src="favicon.ico" alt="rat emoji" />
+        <img src="favicon.ico" alt="rat emoji" />
+        <img src="favicon.ico" alt="rat emoji" />
+      </div>
+    );
   } else {
-
     return (
       <div>
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={11}>
-          {items.map((element) => {
-            return (
-              <Marker
-                key={element.unique_key}
-                icon={icon}
-                position={{ lat: parseFloat(element.latitude), lng: parseFloat(element.longitude) }}
-              />
-            );
-          })}
+          {items.filter((element) => {
+                console.log('CREATED DATE', parseFloat(element.created_date.slice(0, 4)))
+                  return(
+                    testStart <= parseFloat(element.created_date.slice(0, 4)) &&
+                    testEnd > parseFloat(element.created_date.slice(0, 4))
+                  )
+              }
+            )
+            .map((element) => {
+              return (
+                <Marker
+                  key={element.unique_key}
+                  icon={icon}
+                  position={{
+                    lat: parseFloat(element.latitude),
+                    lng: parseFloat(element.longitude),
+                  }}
+                />
+              );
+            })
+            }
         </GoogleMap>
       </div>
     );
-  };
-};
+  }
+}
 
 export default Map;
