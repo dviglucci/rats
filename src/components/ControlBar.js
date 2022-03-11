@@ -3,28 +3,31 @@ import React from "react";
 class ControlBar extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+        startYear: '2011',
+        endYear: '2011'
+    };
 
     this.onChange = this.onChange.bind(this);
   };
 
-  onChange() {
-      console.log('Slider moved...')
+  onChange(event) {
+      console.log(event.target.name)
+      console.log(event.target.value)
+      this.setState({...this.state, [event.target.name]: event.target.value})
+      console.log('STATE CHANGED >>>>', this.state)
   };
 
   render() {
     return (
       <div className={'container-bar'}>
         <h3>Do you slide on all your nights like this...</h3>
-        <div className="slidecontainer">
-          <input
-            type="range"
-            min="1"
-            max="100"
-            id="myRange"
-            onChange={this.onChange}
-          />
-        </div>
+        <div>Show rats</div>
+        <label className="switch">
+  <input type="checkbox" />
+  <span className="slider round"></span>
+  </label>
+
         <label>Starting year</label>
             <select name='startYear' onChange={this.onChange}>
               <option value={"2011"}>2011</option>
