@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { updateStart, updateEnd } from '../redux/controlBar.js';
+
 
 class ControlBar extends React.Component {
   constructor() {
@@ -63,4 +66,18 @@ class ControlBar extends React.Component {
   }
 }
 
-export default ControlBar;
+const mapState = (state) => {
+    return {
+        startYear: state.startYear,
+        endYear: state.endYear
+    };
+};
+
+const mapDispatch = (dispatch) => {
+    return {
+        updateStart: (year) => dispatch(updateStart(year)),
+        updateEnd: (year) => dispatch(updateEnd(year)),
+    }
+}
+
+export default connect(mapState, mapDispatch)(ControlBar);
