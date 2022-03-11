@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker, google } from "@react-google-maps/api";
 import ratIcon from '../rat-25px.png';
 
 
 const icon = ratIcon;
 
 const containerStyle = {
-  width: "100vw",
+  width: "80vw",
   height: "100vh",
 };
 const center = {
@@ -53,7 +53,7 @@ const [error, setError] = useState(null);
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
-    return <div>
+    return <div className="container-load">
         <h1>Loading...</h1>
         <img src="favicon.ico" alt="rat emoji"/>
         <img src="favicon.ico" alt="rat emoji"/>
