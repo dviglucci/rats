@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 // const testEnd = 2022;
 
 let count = 0;
-const icon = ratIcon;
+const rat = ratIcon;
 
 const containerStyle = {
   width: "80vw",
@@ -84,7 +84,7 @@ function Map(props) {
               return (
                 <Marker
                   key={element.unique_key}
-                  icon={icon}
+                  icon={element.complaint_type === 'Rodent'? rat : rat}
                   position={{
                     lat: parseFloat(element.latitude),
                     lng: parseFloat(element.longitude),
