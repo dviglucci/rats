@@ -6,6 +6,8 @@ import {
   google,
 } from "@react-google-maps/api";
 import ratIcon from "../rat-25px.png";
+import { connect } from 'react-redux';
+
 
 const testStart = 2016;
 const testEnd = 2019;
@@ -98,7 +100,14 @@ function Map() {
         </GoogleMap>
       </div>
     );
-  }
-}
+  };
+};
 
-export default Map;
+const mapState = (state) => {
+    return {
+        startYear: state.startYear,
+        endYear: state.endYear,
+    };
+};
+
+export default connect(mapState)(Map);
