@@ -1,25 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateStart, updateEnd } from "../redux/controlBar.js";
+import { updateStart, updateEnd, showRats, showPigeons } from "../redux/controlBar.js";
 
 class ControlBar extends React.Component {
   constructor() {
     super();
-    this.state = {
-      startYear: "2011",
-      endYear: "2011",
-    };
+    // this.state = {
+    //   startYear: "2011",
+    //   endYear: "2011",
+    // };
 
     this.onChange = this.onChange.bind(this);
     this.checker = this.checker.bind(this);
   }
 
   onChange(event) {
-    console.log("PROPS >>>>>", this.props);
-    console.log(event.target.name);
-    console.log(event.target.value);
-    this.setState({ ...this.state, [event.target.name]: event.target.value });
-    console.log("STATE CHANGED >>>>", this.state);
+    // this.setState({ ...this.state, [event.target.name]: event.target.value });
+    // console.log("STATE CHANGED >>>>", this.state);
 
     if (event.target.name === "startYear") {
       this.props.updateStart(event.target.value);
@@ -30,8 +27,14 @@ class ControlBar extends React.Component {
 
   checker(event) {
     console.log("switcheroo");
-    console.log(this.props);
-  }
+    console.log(this.props.showRats);
+
+    if (event.target.name === 'rats') {
+        this.props.updateRats(!this.props.showRats);
+    } else {
+        this.props.updatePigeons(!this.props.showPigeons);
+    };
+  };
 
   render() {
     return (
@@ -39,7 +42,7 @@ class ControlBar extends React.Component {
         <h3>Select dates</h3>
         <div>Show rats</div>
         <label className="switch">
-          <input type="checkbox" onClick={this.checker} />
+          <input name="rats" type="checkbox" onChange={this.checker} />
           <span className="slider round"></span>
         </label>
 
@@ -84,6 +87,8 @@ const mapState = (state) => {
   return {
     startYear: state.startYear,
     endYear: state.endYear,
+    showRats: state.showRats,
+    showPigeons: state.showPigeons,
   };
 };
 
@@ -91,6 +96,8 @@ const mapDispatch = (dispatch) => {
   return {
     updateStart: (year) => dispatch(updateStart(year)),
     updateEnd: (year) => dispatch(updateEnd(year)),
+    updateRats: (boolean) => dispatch(showRats(boolean)),
+    updatePigeons: (boolean) => dispatch(showPigeons(boolean)),
   };
 };
 
