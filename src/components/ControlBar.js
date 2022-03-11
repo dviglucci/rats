@@ -26,9 +26,6 @@ class ControlBar extends React.Component {
   }
 
   checker(event) {
-    console.log("switcheroo");
-    console.log(this.props.showRats);
-
     if (event.target.name === 'rats') {
         this.props.updateRats(!this.props.showRats);
     } else {
@@ -40,9 +37,16 @@ class ControlBar extends React.Component {
     return (
       <div className={"container-bar"}>
         <h3>Select dates</h3>
+
         <div>Show rats</div>
         <label className="switch">
           <input name="rats" type="checkbox" onChange={this.checker} />
+          <span className="slider round"></span>
+        </label>
+
+        <div>Show pigeons</div>
+        <label className="switch">
+          <input name="pigeons" type="checkbox" onChange={this.checker} />
           <span className="slider round"></span>
         </label>
 
