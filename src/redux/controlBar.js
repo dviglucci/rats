@@ -21,7 +21,7 @@ export const updateEnd = (year) => {
 export function startReducer(state = 2011, action) {
   switch (action.type) {
       case UPDATE_START:
-          return action.year;
+          return parseInt(action.year);
       default:
           return state;
   };
@@ -30,7 +30,7 @@ export function startReducer(state = 2011, action) {
 export function endReducer(state = 2012, action) {
     switch (action.type) {
         case UPDATE_END:
-            return action.year;
+            return parseInt(action.year);
         default:
             return state;
     };

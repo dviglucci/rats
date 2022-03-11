@@ -5,7 +5,7 @@ import {
   Marker,
   google,
 } from "@react-google-maps/api";
-import ratIcon from "../rat-25px.png";
+import ratIcon from "../newrat-28px.png";
 import pigeonIcon from "../pigeon-28px.png";
 import { connect } from "react-redux";
 import axios from 'axios';
@@ -39,7 +39,7 @@ function Map(props) {
   // The empty deps array [] means this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
-      console.log('NEW changes applied!!!!!!!')
+      console.log('*********')
       const makeRequest = async () => {
           try {
               const ratResponse = await axios.get('https://data.cityofnewyork.us/resource/erm2-nwe9.json?descriptor=Rat%20Sighting')
@@ -59,22 +59,19 @@ function Map(props) {
     return (
       <div className="container-load">
         <h1>Loading...</h1>
-        <img src="favicon.ico" alt="rat emoji" />
-        <img src="favicon.ico" alt="rat emoji" />
-        <img src="favicon.ico" alt="rat emoji" />
       </div>
     );
   } else {
+      console.log('ITEMS>>>>>', items.length)
     return (
       <div>
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={11}>
           {items
             .filter((element) => {
-              // console.log('CREATED DATE', parseFloat(element.created_date.slice(0, 4)))
               count = 0;
               return (
-                props.startYear <= parseFloat(element.created_date.slice(0, 4)) &&
-                props.endYear > parseFloat(element.created_date.slice(0, 4))
+                props.startYear <= parseInt(element.created_date.slice(0, 4)) &&
+                props.endYear > parseInt(element.created_date.slice(0, 4))
               )
             })
             .map((element) => {
