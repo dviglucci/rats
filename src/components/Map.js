@@ -6,6 +6,7 @@ import {
   google,
 } from "@react-google-maps/api";
 import ratIcon from "../rat-25px.png";
+import pigeonIcon from "../pigeon-28px.png";
 import { connect } from "react-redux";
 import axios from 'axios';
 
@@ -14,6 +15,7 @@ import axios from 'axios';
 
 let count = 0;
 const rat = ratIcon;
+const pigeon = pigeonIcon;
 
 const containerStyle = {
   width: "80vw",
@@ -80,7 +82,7 @@ function Map(props) {
               return (
                 <Marker
                   key={element.unique_key}
-                  icon={element.descriptor === 'Rat Sighting'? rat : rat}
+                  icon={element.descriptor === 'Rat Sighting'? rat : pigeon}
                   position={{
                     lat: parseFloat(element.latitude),
                     lng: parseFloat(element.longitude),
