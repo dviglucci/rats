@@ -39,13 +39,20 @@ class ControlBar extends React.Component {
   render() {
     return (
       <div className={"container-bar"}>
-        <div>Show rats</div>
+
+        <div className="key" id="key-top">
+          <img src={rat} alt="rat icon" className="icon"/>
+          <div>Rat sighting</div>
+        </div>
         <label className="switch">
           <input name="rats" type="checkbox" onChange={this.checker} />
           <span className="slider round"></span>
         </label>
 
-        <div>Show pigeons</div>
+        <div className="key">
+          <img src={pigeon} alt="pigeon icon" className="icon"/>
+          <div>Pigeon waste</div>
+        </div>
         <label className="switch">
           <input name="pigeons" type="checkbox" onChange={this.checker} />
           <span className="slider round"></span>
@@ -84,14 +91,6 @@ class ControlBar extends React.Component {
           <option value={2023}>2023</option>
         </select>
         <ControlBarCircle />
-        <div className="key" id="key-top">
-          <img src={rat} alt="rat icon" className="icon"/>
-          <div>Rat sighting</div>
-        </div>
-        <div className="key">
-          <img src={pigeon} alt="pigeon icon" className="icon"/>
-          <div>Pigeon waste</div>
-        </div>
       </div>
     );
   }

@@ -27,8 +27,8 @@ const containerStyle = {
 };
 
 const startingCenter = {
-  lat: 40.7128,
-  lng: -74.006,
+  lat: 40.695215,
+  lng: -74.026049,
 };
 
 const circleOptions = {
@@ -41,7 +41,7 @@ const circleOptions = {
   draggable: true,
   editable: false,
   visible: true,
-  radius: 1609.34,
+  radius: 804.672,
   zIndex: 1,
 };
 
