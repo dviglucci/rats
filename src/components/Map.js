@@ -20,7 +20,6 @@ let ratCount = 0;
 let pigeonCount = 0;
 let icon;
 
-
 // const rat = ratIcon;
 // const pigeon = pigeonIcon;
 
@@ -35,31 +34,31 @@ const startingCenter = {
 };
 
 const circleOptions = {
-    strokeColor: '#FF0000',
-    strokeOpacity: 0.8,
-    strokeWeight: 2,
-    fillColor: '#FF0000',
-    fillOpacity: 0.35,
-    clickable: true,
-    draggable: true,
-    editable: false,
-    visible: true,
-    radius: 1609.34,
-    zIndex: 1
-  };
+  strokeColor: "#FF0000",
+  strokeOpacity: 0.8,
+  strokeWeight: 2,
+  fillColor: "#FF0000",
+  fillOpacity: 0.35,
+  clickable: true,
+  draggable: true,
+  editable: false,
+  visible: true,
+  radius: 1609.34,
+  zIndex: 1,
+};
 
 function Map(props) {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  const [circleCenter, setCircleCenter] = useState(startingCenter)
+  const [circleCenter, setCircleCenter] = useState(startingCenter);
 
-//   const {} = useLoadScript({
-//     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-//   });
-useLoadScript({
+  //   const {} = useLoadScript({
+  //     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+  //   });
+  useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-});
+  });
 
   // The empty deps array [] means this useEffect will run once
   // similar to componentDidMount()
@@ -81,6 +80,13 @@ useLoadScript({
     };
     makeRequest();
   }, []);
+
+  const onDrag = (event) =>
+    setCircleCenter({
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng(),
+  })
+
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
@@ -92,17 +98,23 @@ useLoadScript({
     );
   } else {
     console.log("ITEMS>>>>>", items.length);
-    console.log(props)
+    console.log(props);
     return (
       <div>
-        <GoogleMap mapContainerStyle={containerStyle} center={startingCenter} zoom={11}>
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={startingCenter}
+          zoom={11}
+        >
           {items
             .filter((element) => {
               return (
                 props.startYear <= parseInt(element.created_date.slice(0, 4)) &&
                 props.endYear > parseInt(element.created_date.slice(0, 4)) &&
-                ((element.descriptor === "Rat Sighting" && props.showRats) === true ||
-                  (element.descriptor === "Pigeon Waste" && props.showPigeons) === true)
+                ((element.descriptor === "Rat Sighting" && props.showRats) ===
+                  true ||
+                  (element.descriptor === "Pigeon Waste" &&
+                    props.showPigeons) === true)
               );
             })
             .map((element) => {
@@ -110,8 +122,8 @@ useLoadScript({
                 ratCount += 1;
                 icon = ratIcon;
               } else {
-                  pigeonCount += 1;
-                  icon = pigeonIcon;
+                pigeonCount += 1;
+                icon = pigeonIcon;
               }
               return (
                 <Marker
@@ -127,7 +139,13 @@ useLoadScript({
           {console.log("RAT COUNT>>>>>", ratCount)}
           {console.log("PIGEON COUNT>>>>>", pigeonCount)}
           {/* <TransitLayer /> */}
-          <Circle options={circleOptions} center={circleCenter} onDrag={(event) => console.log('YOOOOOOOOOO', event.latLng.toString())}/>
+          {/* .latLng.toString()) */}
+          <Circle
+            options={circleOptions}
+            center={circleCenter}
+            onDrag={onDrag}
+          />
+          {console.log("circleCenter >>>", circleCenter)}
         </GoogleMap>
       </div>
     );

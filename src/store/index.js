@@ -2,7 +2,7 @@ import { createStore, combineReducers } from 'redux';
 // import {createLogger} from 'redux-logger';
 // import thunkMiddleware from 'redux-thunk';
 // import {composeWithDevTools} from 'redux-devtools-extension';
-import { startReducer, endReducer, ratReducer, pigeonReducer } from '../redux/controlBar';
+import { startReducer, endReducer, ratReducer, pigeonReducer, circleReducer } from '../redux/controlBar';
 
 
 const reducer = combineReducers({
@@ -10,6 +10,7 @@ const reducer = combineReducers({
     endYear: endReducer,
     showRats: ratReducer,
     showPigeons: pigeonReducer,
+    showCircle: circleReducer,
 });
 
 const store = createStore(reducer);

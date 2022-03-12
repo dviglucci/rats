@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { updateStart, updateEnd, showRats, showPigeons } from "../redux/controlBar.js";
 import rat from '../newrat-28px.png';
 import pigeon from '../pigeon-28px.png';
+import ControlBarCircle from "./ContolBarCircle.js";
 
 class ControlBar extends React.Component {
   constructor() {
@@ -82,6 +83,7 @@ class ControlBar extends React.Component {
           <option value={2022}>2022</option>
           <option value={2023}>2023</option>
         </select>
+        <ControlBarCircle />
         <div className="key" id="key-top">
           <img src={rat} alt="rat icon" className="icon"/>
           <div>Rat sighting</div>
