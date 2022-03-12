@@ -3,6 +3,8 @@ import {
   GoogleMap,
   useLoadScript,
   Marker,
+  Circle,
+  TransitLayer,
   google,
 } from "@react-google-maps/api";
 import ratIcon from "../newrat-28px.png";
@@ -26,19 +28,38 @@ const containerStyle = {
   width: "80vw",
   height: "100vh",
 };
-const center = {
+
+const startingCenter = {
   lat: 40.7128,
   lng: -74.006,
 };
+
+const circleOptions = {
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35,
+    clickable: true,
+    draggable: true,
+    editable: false,
+    visible: true,
+    radius: 1609.34,
+    zIndex: 1
+  };
 
 function Map(props) {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
+  const [circleCenter, setCircleCenter] = useState(startingCenter)
 
-  const {} = useLoadScript({
+//   const {} = useLoadScript({
+//     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+//   });
+useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-  });
+});
 
   // The empty deps array [] means this useEffect will run once
   // similar to componentDidMount()
@@ -74,7 +95,7 @@ function Map(props) {
     console.log(props)
     return (
       <div>
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={11}>
+        <GoogleMap mapContainerStyle={containerStyle} center={startingCenter} zoom={11}>
           {items
             .filter((element) => {
               return (
@@ -105,6 +126,8 @@ function Map(props) {
             })}
           {console.log("RAT COUNT>>>>>", ratCount)}
           {console.log("PIGEON COUNT>>>>>", pigeonCount)}
+          {/* <TransitLayer /> */}
+          <Circle options={circleOptions} center={circleCenter} onDrag={(event) => console.log('YOOOOOOOOOO', event.latLng.toString())}/>
         </GoogleMap>
       </div>
     );
