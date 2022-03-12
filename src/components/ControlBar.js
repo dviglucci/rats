@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { updateStart, updateEnd, showRats, showPigeons } from "../redux/controlBar.js";
 import rat from '../newrat-28px.png';
 import pigeon from '../pigeon-28px.png';
-import ControlBarCircle from "./ContolBarCircle.js";
+import ControlBarCircle from "./ControlBarCircle.js";
 
 class ControlBar extends React.Component {
   constructor() {

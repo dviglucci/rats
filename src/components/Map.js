@@ -4,8 +4,6 @@ import {
   useLoadScript,
   Marker,
   Circle,
-  TransitLayer,
-  google,
 } from "@react-google-maps/api";
 import ratIcon from "../newrat-28px.png";
 import pigeonIcon from "../pigeon-28px.png";
@@ -85,7 +83,7 @@ function Map(props) {
     setCircleCenter({
       lat: event.latLng.lat(),
       lng: event.latLng.lng(),
-  })
+    });
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -138,13 +136,13 @@ function Map(props) {
             })}
           {console.log("RAT COUNT>>>>>", ratCount)}
           {console.log("PIGEON COUNT>>>>>", pigeonCount)}
-          {/* <TransitLayer /> */}
-          {/* .latLng.toString()) */}
-          <Circle
-            options={circleOptions}
-            center={circleCenter}
-            onDrag={onDrag}
-          />
+          {props.showCircle === true ? (
+            <Circle
+              options={circleOptions}
+              center={circleCenter}
+              onDrag={onDrag}
+            />
+          ) : null}
           {console.log("circleCenter >>>", circleCenter)}
         </GoogleMap>
       </div>
@@ -158,6 +156,7 @@ const mapState = (state) => {
     endYear: state.endYear,
     showRats: state.showRats,
     showPigeons: state.showPigeons,
+    showCircle: state.showCircle,
   };
 };
 
