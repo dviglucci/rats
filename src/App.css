@@ -156,10 +156,9 @@ select {
 
 button {
   margin: 20px 0px 5px;
-  padding: 0px 10px;
+  padding: 5px 10px;
   background-color: #c3224e;
   border-color: #463f3a;
-  height: 40px;
   font-size: large;
   color: white;
   border-radius: 8px;
@@ -175,14 +174,27 @@ button:hover {
   color: black;
 }
 
+.info-box {
+  width: 20%;
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  border: 2px solid black;
+  padding: 10px 15px 30px;
+}
+
 #info-box-button {
-  font-size: small;
+  font-size: 14pt;
   background-color: #fdbb2d;
   color: black;
   text-decoration: none;
-  padding: 10px;
+  padding: 5px 10px;
   border: 2px solid black;
   border-radius: 8px;
+}
+
+.info-text {
+  margin: 10px 0px 20px;
 }
 
 /* The Modal (background) */
@@ -220,15 +232,6 @@ button:hover {
   color: black;
   text-decoration: none;
   cursor: pointer;
-}
-
-.info-box {
-  width: 20%;
-  position: absolute;
-  top: 40%;
-  left: 10%;
-  border: 1px solid #333;
-  padding: 10px 15px;
 }
 
 #rat {
