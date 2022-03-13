@@ -1,6 +1,7 @@
 import React from 'react';
 import ControlBar from './ControlBar';
 import Map from './Map';
+import splat from '../splat.png';
 
 
 const MapContainer = () => {
@@ -8,6 +9,7 @@ const MapContainer = () => {
         <div className={'container-row'}>
           <Map className={'container-col'}/>
           <ControlBar />
+          {/* <img src={splat} alt="splat" id='splat'/> */}
         </div>
     );
 };
