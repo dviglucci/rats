@@ -4,6 +4,8 @@ import { updateStart, updateEnd, showRats, showPigeons } from "../redux/controlB
 import rat from '../newrat-28px.png';
 import pigeon from '../pigeon-28px.png';
 import ControlBarCircle from "./ControlBarCircle.js";
+import splat from "../splat.png";
+import history from "../history.js";
 
 class ControlBar extends React.Component {
   constructor() {
@@ -39,6 +41,10 @@ class ControlBar extends React.Component {
   render() {
     return (
       <div className={"container-bar"}>
+          <div className="splat-div">
+            {/* <div id="splat-text">Home</div> */}
+            <img src={splat} alt="splat" id="splat" onClick={() => history.push('/')}/>
+          </div>
 
         <div className="key" id="key-top">
           <img src={rat} alt="rat icon" className="icon"/>

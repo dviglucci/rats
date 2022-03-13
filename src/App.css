@@ -71,6 +71,7 @@
   padding: 2%;
   font-size: larger;
   background-color: #fdbb2d;
+  padding-top: 8%;
 }
 
 .switch {
@@ -85,13 +86,6 @@
   opacity: 0;
   width: 0;
   height: 0;
-}
-
-.splat {
-  position: absolute;
-  top: 10%;
-  right: -25px;
-  width: 40px;
 }
 
 .slider {
@@ -195,6 +189,21 @@ button:hover {
 
 .info-text {
   margin: 10px 0px 20px;
+}
+
+.splat-div {
+  position: absolute;
+  top: .5%;
+  right: .5%;
+}
+
+#splat {
+  width: 10vw;
+  position: absolute;
+  right: 15%;
+  margin: 10px;
+  transform: rotate(20deg);
+  cursor: pointer;
 }
 
 /* The Modal (background) */
