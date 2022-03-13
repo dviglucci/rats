@@ -19,9 +19,9 @@ const ControlBarCircle = (props) => {
 
   return (
     <div>
-      <div onClick={circleFxn} id="how-many">
-        ⭐ How many pests are near me?
-      </div>
+      <button onClick={circleFxn}>
+        How many critters are near me?
+      </button>
       <div id="myModal" className="modal">
             <div className="modal-content">
               <span className="close" onClick={closeModal}>&times;</span>

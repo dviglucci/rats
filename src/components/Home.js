@@ -1,20 +1,25 @@
 import '../App.css';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import ratHome from '../rat-home.png';
 import logo from '../logo.png';
+import InfoBox from './InfoBox.js'
 
 function Home() {
+  const [showInfoBox, setInfoBox] = useState(false);
+
   return (
     <div className="home">
       <header className="home-text">
       <img src={logo} alt='logo' id='logo'/>
         <div>(and pigeons, too)</div>
-        <Link to='/map'>See map</Link>
+        <button onClick={() => setInfoBox(true)}>Huh?</button>
       </header>
-      <div className='skyscrapers'>
-        <div id='s1'></div>
+      <div className='rat-home'>
+      <img src={ratHome} alt='rat'/>
       </div>
-      <img src={ratHome} alt='rat' id='rat-home'/>
+      {showInfoBox === true ?
+        <InfoBox /> : null
+      }
     </div>
   );
 }

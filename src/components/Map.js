@@ -41,7 +41,7 @@ const circleOptions = {
   draggable: true,
   editable: false,
   visible: true,
-  radius: 804.672,
+  radius: 1609.34,
   zIndex: 1,
 };
 
