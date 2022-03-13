@@ -10,37 +10,13 @@ import pigeonIcon from "../pigeon-28px.png";
 import pizza from "../pizza.png";
 import { connect } from "react-redux";
 import axios from "axios";
-import google, { computeDistanceBetween } from "@googlemaps/react-wrapper";
+import { getDistance } from "./CircleFormula.js";
+import { ratsInCircle, pigeonsInCircle } from "../redux/controlBar.js";
 
-// const testStart = 2011;
-// const testEnd = 2022;
 
 let ratCount;
 let pigeonCount;
 let icon;
-
-// const rat = ratIcon;
-// const pigeon = pigeonIcon;
-
-
-////////////////////////////////////////
-
-var rad = function(x) {
-    return x * Math.PI / 180;
-  };
-  
-  var getDistance = function(p1, p2) {
-    var R = 6378137; // Earth’s mean radius in meter
-    var dLat = rad(p2.lat - p1.lat);
-    var dLong = rad(p2.lng - p1.lng);
-    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(rad(p1.lat)) * Math.cos(rad(p2.lat)) *
-      Math.sin(dLong / 2) * Math.sin(dLong / 2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var d = R * c;
-    return d; // returns the distance in meter
-  };
-////////////////////////////////////////
 
 
 const containerStyle = {
@@ -135,27 +111,23 @@ function Map(props) {
               );
             })
             .map((element) => {
-              if (element.descriptor === "Rat Sighting") {
-                icon = ratIcon;
-                const distanceToCenter = getDistance(
+               const distanceToCenter = getDistance(
                     circleCenter,
                     {lat: parseFloat(element.latitude), lng: parseFloat(element.longitude)}
                 );
-                console.log("RAT DIST >>>>>", distanceToCenter)
+              if (element.descriptor === "Rat Sighting") {
+                icon = ratIcon;
                 if (distanceToCenter <= 1609.34) {
                     ratCount += 1;
                     console.log('RAT COUNT INCREMENTED >>>>', ratCount);
+                    // props.updateRatsInCircle(ratCount)
                 };
               } else {
                 icon = pigeonIcon;
-                const distanceToCenter = getDistance(
-                    circleCenter,
-                    {lat: parseFloat(element.latitude), lng: parseFloat(element.longitude)}
-                );
-                console.log("PIGEON DIST >>>>>", distanceToCenter)
                 if (distanceToCenter <= 1609.34) {
                     pigeonCount += 1;
                     console.log('PIGEON COUNT INCREMENTED >>>>', pigeonCount);
+                    // props.updatePigeonsInCircle(pigeonCount)
                 };
               };
               return (
@@ -191,7 +163,16 @@ const mapState = (state) => {
     showRats: state.showRats,
     showPigeons: state.showPigeons,
     showCircle: state.showCircle,
+    ratsInCircle: state.ratsInCircle,
+    pigeonsInCircle: state.pigeonsInCircle,
   };
 };
 
-export default connect(mapState)(Map);
+const mapDispatch = (dispatch) => {
+    return {
+      updateRatsInCircle: (ratCount) => dispatch(ratsInCircle(ratCount)),
+      updatePigeonsInCircle: (pigeonCount) => dispatch(pigeonsInCircle(pigeonCount)),
+    };
+  };
+
+export default connect(mapState, mapDispatch)(Map);
