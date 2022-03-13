@@ -74,11 +74,14 @@ function Map(props) {
     makeRequest();
   }, []);
 
-  const onDrag = (event) =>
+  const onDrag = (event) => {
     setCircleCenter({
       lat: event.latLng.lat(),
       lng: event.latLng.lng(),
     });
+    props.updateRatsInCircle(ratCount);
+    props.updatePigeonsInCircle(pigeonCount);
+  };
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -141,13 +144,13 @@ function Map(props) {
                 />
               );
             })}
-          {console.log("RAT COUNT>>>>>", ratCount)}
-          {console.log("PIGEON COUNT>>>>>", pigeonCount)}
+          {console.log("RAT COUNT>>>>>", props.ratsInCircle)}
+          {console.log("PIGEON COUNT>>>>>", props.pigeonsInCircle)}
           {props.showCircle === true ? (
             <Circle
               options={circleOptions}
               center={circleCenter}
-              onDrag={onDrag}
+              onDragEnd={onDrag}
             />
           ) : null}
         </GoogleMap>

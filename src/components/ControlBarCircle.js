@@ -30,18 +30,25 @@ const ControlBarCircle = (props) => {
           </div>
       {renderCircle === true ?  
           <div>
-            There are x rat sightings and y reports of pigeon waste within 1 mile of your
-            location 👀
+            {`There were ${props.ratsInCircle} rat sightings and ${props.pigeonsInCircle} reports of pigeon waste within 1 mile of your
+            location 👀`}
           </div>
        : null}
     </div>
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapState = (state) => {
+  return {
+    ratsInCircle: state.ratsInCircle,
+    pigeonsInCircle: state.pigeonsInCircle,
+  };
+};
+
+const mapDispatch = (dispatch) => {
   return {
     renderCircle: () => dispatch(showCircle()),
   };
 };
 
-export default connect(null, mapDispatchToProps)(ControlBarCircle);
+export default connect(mapState, mapDispatch)(ControlBarCircle);
