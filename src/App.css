@@ -7,7 +7,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(8px + 2vmin);
+}
+
+.home-text {
+  z-index: 5;
 }
 
 .pizza {
@@ -17,15 +21,23 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .pizza {
-    animation: App-logo-spin infinite 20s linear;
+    animation: pizza-spin infinite 20s linear;
   }
 }
 
-.App-link {
-  color: #61dafb;
+#pizza-2 {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  max-width: 200px;
 }
 
-@keyframes App-logo-spin {
+.link {
+  color: #fdbb2d;
+  padding-right: 10px;
+}
+
+@keyframes pizza-spin {
   from {
     transform: rotate(0deg);
   }
@@ -146,16 +158,31 @@ button {
   margin: 20px 0px 5px;
   padding: 0px 10px;
   background-color: #c3224e;
-  /* border: none; */
   border-color: #463f3a;
   height: 40px;
   font-size: large;
   color: white;
   border-radius: 8px;
+  z-index: 1;
 }
 
 button:hover {
   cursor: pointer;
+}
+
+#button-home {
+  background-color: #fdbb2d;
+  color: black;
+}
+
+#info-box-button {
+  font-size: small;
+  background-color: #fdbb2d;
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 8px;
 }
 
 /* The Modal (background) */
@@ -195,25 +222,38 @@ button:hover {
   cursor: pointer;
 }
 
-.rat-home {
-  float: left;
-}
-
 .info-box {
   width: 20%;
   position: absolute;
-  top: 30%;
-  right: 7%;
+  top: 40%;
+  left: 10%;
   border: 1px solid #333;
   padding: 10px 15px;
 }
 
-/* .info-text {
-  width: 42px;
-  height: 42px;
-  background: red;
+#rat {
+  bottom: 0%;
+  right: 0%;
   position: absolute;
-  top: 0;
+  animation: linear infinite;
+  animation-name: run;
+  animation-duration: 5s;
+  animation-iteration-count: 1
+}
+
+@keyframes run {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 75%;
+  }
+}
+
+#skyline {
+  width: 60vw;
+  position: absolute;
+  bottom: 0;
   right: 0;
-  z-index: 1;
-} */
+  z-index: 0;
+}

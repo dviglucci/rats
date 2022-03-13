@@ -5,9 +5,10 @@ const InfoBox = () => {
   return (
       <div className='info-box'>
           <div className='info-text'>
-          NYC Open Data contains information about rat sightings and reports of pigeon waste across the city. You can use this web app to explore the data!
+              <Link to='https://opendata.cityofnewyork.us/' className='link'>NYC Open Data</Link>
+          contains information about rat sightings and reports of pigeon waste across the city. You can use this web app to explore the data!
           </div>
-          <Link to='/map'>Weird, but ok</Link>
+          <Link to='/map' id='info-box-button'>Weird, but ok</Link>
       </div>
   );
 };

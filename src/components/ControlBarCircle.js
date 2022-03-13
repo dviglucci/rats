@@ -30,7 +30,7 @@ const ControlBarCircle = (props) => {
           </div>
       {renderCircle === true ?  
           <div>
-            There are x rat sightings and x reports of pigeon waste within 1 mile of your
+            There are x rat sightings and y reports of pigeon waste within 1 mile of your
             location 👀
           </div>
        : null}
