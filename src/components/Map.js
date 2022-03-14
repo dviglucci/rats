@@ -18,7 +18,6 @@ let ratCount;
 let pigeonCount;
 let icon;
 
-
 const containerStyle = {
   width: "80vw",
   height: "100vh",
@@ -120,13 +119,11 @@ function Map(props) {
                 icon = ratIcon;
                 if (distanceToCenter <= 1609.34) {
                     ratCount += 1;
-                    console.log('RAT COUNT INCREMENTED >>>>', ratCount);
                 };
               } else {
                 icon = pigeonIcon;
                 if (distanceToCenter <= 1609.34) {
                     pigeonCount += 1;
-                    console.log('PIGEON COUNT INCREMENTED >>>>', pigeonCount);
                 };
               };
               return (

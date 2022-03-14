@@ -41,7 +41,7 @@ class ControlBar extends React.Component {
 
         <div className="key" id="key-top">
           <img src={rat} alt="rat icon" className="icon"/>
-          <div>Rat sighting</div>
+          <div>Rat sightings</div>
         </div>
         <label className="switch">
           <input name="rats" type="checkbox" onChange={this.checker} />
