@@ -8,7 +8,6 @@ const MapContainer = () => {
         <div className={'container-row'}>
           <Map className={'container-col'}/>
           <ControlBar />
-          {/* <img src={splat} alt="splat" id='splat'/> */}
         </div>
     );
 };

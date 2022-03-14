@@ -10,19 +10,12 @@ import history from "../history.js";
 class ControlBar extends React.Component {
   constructor() {
     super();
-    // this.state = {
-    //   startYear: "2011",
-    //   endYear: "2011",
-    // };
 
     this.onChange = this.onChange.bind(this);
     this.checker = this.checker.bind(this);
   }
 
   onChange(event) {
-    // this.setState({ ...this.state, [event.target.name]: event.target.value });
-    // console.log("STATE CHANGED >>>>", this.state);
-
     if (event.target.name === "startYear") {
       this.props.updateStart(event.target.value);
     } else if (event.target.name === "endYear") {

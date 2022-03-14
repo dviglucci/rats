@@ -53,8 +53,6 @@ function Map(props) {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY + '&libraries=geometry',
   });
 
-  // The empty deps array [] means this useEffect will run once
-  // similar to componentDidMount()
   useEffect(() => {
     const makeRequest = async () => {
       try {
@@ -123,14 +121,12 @@ function Map(props) {
                 if (distanceToCenter <= 1609.34) {
                     ratCount += 1;
                     console.log('RAT COUNT INCREMENTED >>>>', ratCount);
-                    // props.updateRatsInCircle(ratCount)
                 };
               } else {
                 icon = pigeonIcon;
                 if (distanceToCenter <= 1609.34) {
                     pigeonCount += 1;
                     console.log('PIGEON COUNT INCREMENTED >>>>', pigeonCount);
-                    // props.updatePigeonsInCircle(pigeonCount)
                 };
               };
               return (
@@ -144,8 +140,6 @@ function Map(props) {
                 />
               );
             })}
-          {console.log("RAT COUNT>>>>>", props.ratsInCircle)}
-          {console.log("PIGEON COUNT>>>>>", props.pigeonsInCircle)}
           {props.showCircle === true ? (
             <Circle
               options={circleOptions}
