@@ -1,7 +1,6 @@
 import React from 'react';
 import ControlBar from './ControlBar';
 import Map from './Map';
-import splat from '../splat.png';
 
 
 const MapContainer = () => {
