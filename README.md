@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# About *Rats!*
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+*Rats!* is an interactive web app that displays rat sightings and reports of pigeon waste across New York City. This React-Redux app was the winner of my bootcamp class’s Stackathon for its memorable concept and creative take on data visualization.
 
-## Available Scripts
+Using the Google Maps API as a canvas, I displayed the locations of rat sightings and instances of pigeon waste based on data I pulled from the NYC Open Data API. Users can filter this data by type of report or by year. They can also see how many reports were made in a given location by dragging a circle around the map.
 
-In the project directory, you can run:
+Deployed site: https://ratsnyc.herokuapp.com/
+<br />Video walkthrough: https://youtu.be/Q58oBMyDLOM
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The home page of the app features a rat darting behind a building, courtesy of CSS transitions. Upon clicking a button, users gain some background information about the data that they are about to see.
 
-### `npm test`
+![home page](./public/rats-homepage.gif)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Those with slower connections will see a spinning pizza wheel as the app loads up.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The app’s main page is a map of New York City with different icons for rat sightings and reports of pigeon waste. Users can filter the data using the toggle buttons and drop down menus.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![home page](./public/rats-filters.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Clicking “How many critters are near me?” allows users to see how many reports occurred within a 1-mile radius of a given location by dragging a circle around the map.
 
-### `npm run eject`
+![home page](./public/rats-circle.gif)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Tech Stack
+* React
+* Redux
+* NYC Open Data API
+* Google Maps API
