@@ -16,6 +16,8 @@ The home page of the app features a rat darting behind a building, courtesy of C
 
 Those with slower connections will see a spinning pizza wheel as the app loads up.
 
+![home page](./public/rats-pizza.gif)
+
 
 The app’s main page is a map of New York City with different icons for rat sightings and reports of pigeon waste. Users can filter the data using the toggle buttons and drop down menus.
 
@@ -26,7 +28,7 @@ Clicking “How many critters are near me?” allows users to see how many repor
 ![home page](./public/rats-circle.gif)
 
 # Tech Stack
-* React
-* Redux
-* NYC Open Data API
-* Google Maps API
+* [React](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
+* [NYC Open Data API](https://opendata.cityofnewyork.us/)
+* [Google Maps API](https://developers.google.com/maps)
